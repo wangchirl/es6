@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-模板字符串</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 1、声明：单引号、双引号、反引号
+       * 2、反引号：内容中可以直接出现换行符
+       * 3、反引号：变量拼接 ${变量名称}
+       * 4、startsWith 以某某开头、endsWith 以某某结尾
+       * 5、repeat 重复
+       */
+      // 1.声明：单引号、双引号、反引号
+      {
+        let a = "hello";
+        let b = "world";
+        let str = `shadow`;
+        console.log(str, typeof str); // shadow string
+      }
+
+      // 2.反引号：内容中可以直接出现换行符
+      {
+        let str = `<div>
+                    <h1>shadow</h1>
+                </div>`;
+      }
+
+      // 3.反引号：变量拼接 ${变量名称}
+      {
+        let name = "shadow";
+        let f = () => {
+          return "age 20";
+        };
+        let str = `我是 ${name} ${f()}`;
+        console.log(str); // 我是 shadow age 20
+      }
+
+      // 4、startsWith、endsWith
+      let str = "Hello ECMAScript 2015";
+      let r1 = str.startsWith("Hello");
+      console.log(r1); // true
+      let r2 = str.endsWith("2016");
+      console.log(r2); // false
+
+      // 5、repeat
+      let s = "word ";
+      let ss = s.repeat(2);
+      console.log(ss); // word word 
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-let变量声明以及声明特性</title>
+    <style>
+      .container .item {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="page-header">点击切换颜色</h2>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <script>
+      /**
+         1、let关键字就是用来声明变量的
+         2、使用let关键字声明的变量具有块级作用域
+			   3、在一个大括号中 使用let关键字声明的变量才具有块级作用域 var关键字是不具备这个特点的
+         4、防止循环变量变成全局变量，大括号中没有 var 修饰的变量会变成全局变量
+         5、使用let关键字声明的变量没有变量提升
+         6、使用let关键字声明的变量具有暂时性死区特性 
+      */
+      // 1、let 声明变量：单独声明、连续声明、声明并赋值、连续声明并赋值
+      {
+        let a;
+        let b, c, d;
+        let e = 100;
+        let f = 520,
+          g = "shadow",
+          h = [];
+      }
+
+      // 1.1 变量不能重复声明
+      {
+        let name = "oracle";
+        // let name = "shadow"; // Identifier 'name' has already been declared
+      }
+
+      // 2、块级作用域
+      // es5:全局、函数、eval，var函数外声明的是全局，函数内不带var是全局
+      // if else while for 中 {}
+      {
+        {
+          let my = "shadow";
+        }
+        // console.log(my); // my is not defined
+      }
+
+      // 3、let 和 var 声明的区别
+      var x = 123;
+      console.log(window.x); // 123
+
+      // 4、大括号或方法中被调用后，没有修饰的变量便全局变量
+      {
+        y = 456;
+      }
+      console.log(y); // 456
+      console.log(window.y); // 456
+
+      // 5、不存在变量提升
+      {
+        console.log(num); // undefined var 声明的变量存在变量提升
+        // console.log(NUM); //  Cannot access 'NUM' before initialization
+        var num = 100;
+        let NUM = 100;
+      }
+
+      // 不影响作用域链
+      {
+        let my = "shadow";
+        function fn() {
+          console.log(my); // shadow 完美输出，不影响作用域链
+        }
+        fn();
+      }
+      // 6、具有暂时性死区特性
+      let items = document.getElementsByClassName("item");
+      // for 循环中使用 let 声明变量；var 声明变量时，修改失败
+      for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+          items[i].style.background = "red"; // 正确修改
+        };
+      }
+      // 经典面试题
+      let arr = [];
+      for (let i = 0; i < 2; i++) {
+        arr[i] = function () {
+          console.log(i);
+        };
+      }
+      arr[0](); // 0
+      arr[1](); // 1
+
+      let arr1 = [];
+      for (var i = 0; i < 2; i++) {
+        arr1[i] = function () {
+          console.log(i);
+        };
+      }
+      arr1[0](); // 2
+      arr1[1](); // 2
+
+    </script>
+  </body>
+</html>

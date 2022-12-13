@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13-Symbol</title>
+  </head>
+  <body>
+    <script>
+      // Symbol是ES6中引入的一种新的基本数据类型，用于表示一个独一无二的值
+      // 是JavaScript中的第七种数据类型，与undefined、null、Number（数值）、String（字符串）、Boolean（布尔值）、Object（对象）并列
+      // 创建 Symbol
+      // 1.Symbol()
+      let s = Symbol();
+      let s1 = Symbol("我是标识");
+      let s2 = Symbol("我是标识");
+      console.log(s1 === s2); // false
+      console.log(typeof s1); // symbol
+
+      // 2.Symbol.for()
+      let s11 = Symbol.for("我是标识");
+      let s22 = Symbol.for("我是标识");
+      console.log(s11 === s22); // true
+
+      // Symbol 类型的值不能与其他数据进行运算
+      // Symbol 类型的值不能通过遍历的方式拿到
+      let obj = {
+        [s1]: "shadow",
+        [s2]: 22,
+        name: "oracle",
+        age: 18,
+      };
+      for (let key in obj) {
+        console.log(key); // name age
+      }
+      console.log(Object.keys(obj)); // ['name', 'age']
+      console.log(Object.getOwnPropertyNames(obj)); // ['name', 'age']
+      console.log(JSON.stringify(obj)); // {"name":"oracle","age":18}
+
+      // 以下方式获取到 symbol 类型的值
+      console.log(Object.getOwnPropertySymbols(obj)); // [Symbol(我是标识), Symbol(我是标识)]
+      console.log(Reflect.ownKeys(obj)); // ['name', 'age', Symbol(我是标识), Symbol(我是标识)]
+    </script>
+  </body>
+</html>

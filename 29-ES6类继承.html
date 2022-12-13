@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>29-ES6类继承</title>
+  </head>
+  <body>
+    <script>
+      // ES6 使用关键字 class 创建类 extends 关键字继承类
+      class Father {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        say() {
+          console.log(`Hello！${name}`);
+        }
+      }
+      // extends 继承父类
+      class Son extends Father {
+        constructor(name, age, school) {
+          // super 调用父级构造方法
+          super(name, age);
+          this.school = school;
+        }
+      }
+
+      let me = new Son("shadow", 22, "合肥工业大学");
+      console.log(me);
+      me.say(); // Hello！shadow
+    </script>
+  </body>
+</html>

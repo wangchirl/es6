@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11-扩展运算符</title>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      /**
+       * 1、... 扩展运算符可以将数组转化为空格分隔的参数序列
+       * 2、... 扩展运算符应用于数组合并
+       * 3、数组的克隆(浅拷贝)
+       * 4、利用扩展运算符将伪数组转换为真正的数组
+       */
+      // 1、... 扩展运算符可以将数组转化为逗号分隔的参数序列
+      const me = ["shadow", "22", "boy"];
+      console.log(...me); // shadow 22 boy
+
+      // 2、... 扩展运算符应用于数组合并
+      let a = [1, 2, 3];
+      const b = [4, 5, 6];
+      // ES5 concat 方法合并
+      a = a.concat(b);
+      console.log(a); // [1, 2, 3, 4, 5, 6]
+      const c = [1, 2, 3];
+      const d = [4, 5, 6];
+      c.push(...d);
+      console.log(c); //  [1, 2, 3, 4, 5, 6]
+
+      // 3、数组的克隆(浅拷贝)
+      const e = ["1", "2", "3"];
+      const f = [...e];
+      console.log(f); // ['1', '2', '3']
+
+      // 4、利用扩展运算符将伪数组转换为真正的数组
+      function print() {
+        console.log(arguments);
+      }
+      print(me); // 0: (3) ['shadow', '22', 'boy']
+      // 此时数组被转换为参数序列
+      // 0: "shadow"
+      // 1: "22"
+      // 2: "boy"
+      print(...me);
+      const all = document.querySelectorAll("div");
+      console.log(all instanceof NodeList); // true
+      console.log(all instanceof Array); // false
+      const allArr = [...all];
+      console.log(allArr instanceof Array); // true
+    </script>
+  </body>
+</html>

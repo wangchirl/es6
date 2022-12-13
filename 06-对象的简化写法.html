@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06-对象的简化写法</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 1、ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法
+       * 2、属性名称不一样时，得进行匹配
+       */
+      // 1、ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法
+      let name = "shadow";
+      let change = function () {
+        console.log("a coder！！！");
+      };
+      // 1、属性名称一样时，简化写法
+      const person = {
+        name, // name:name,
+        change, // change:change
+      };
+      console.log(person);
+      // 2、属性名称不一样时，得进行匹配
+      const people = {
+        p_name: name, // p_name: name
+        p_change: change, // p_change: change
+      };
+      console.log(people);
+    </script>
+  </body>
+</html>

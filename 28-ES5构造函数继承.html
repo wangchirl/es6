@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>28-ES5构造函数继承</title>
+  </head>
+  <body>
+    <script>
+      // ES5级以前的类使用：函数方式，函数名称首字母大写,使用关键字 new 创建 
+      function Father(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Father.prototype.say = function () {
+        console.log(`Hello！${this.name}`);
+      };
+
+      function Son(name, age, shool) {
+        Father.call(this, name, age);
+        this.shool = shool;
+      }
+      Son.prototype = new Father();
+      Son.prototype.constructor = Son;
+
+      let me = new Son("shadow", 22, "合肥工业大学");
+      console.log(me);
+      me.say(); // Hello！shadow
+    </script>
+  </body>
+</html>

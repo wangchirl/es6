@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-const声明常量以及特点.html</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 1、使用const关键字声明的常量具有块级作用域
+       * 2、使用const关键字声明的常量必须赋初始值
+       * 3、常量声明后值不可更改
+       * 4、对数组和对象的元素修改，不算对常量的修改，不会报错
+       * 5、约定 const 声明的常量一般使用大写
+       */
+      // 1、const 声明常量具有块级作用域
+      {
+        const NAME = "shadow";
+        console.log(NAME);
+      }
+
+      // 2、必须要赋初始值
+      {
+        // const A; //  Missing initializer in const declaration
+      }
+
+      // 3.常量的值不能修改
+      const PI = 3.1415926;
+      // PI = 666; // Assignment to constant variable.
+
+      // 4、对数组和对象的元素修改，不算对常量的修改，不会报错
+      {
+        const TEMP = ["oracle", "shadow", "great"];
+        TEMP.push("hello"); // 可以添加
+        TEMP[0] = "ORANGE"; // 可以修改内部属性值
+        console.log(TEMP); // ['ORANGE', 'shadow', 'great', 'hello']
+        // TEMP = 123; // Assignment to constant variable.
+      }
+    </script>
+  </body>
+</html>

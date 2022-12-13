@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04-变量解构赋值</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 1、数组解构 -> 索引对应
+       * 2、对象解构 -> 名称对应或对名称映射
+       */
+      // 1.数组解构 -> 从数组和对象中提取值，对变量进行赋值
+      {
+        const arr = ["重庆", "北京", "上海"];
+        let [cq, bj, sh] = arr;
+        console.log(cq); // 重庆
+        console.log(bj); // 北京
+        console.log(sh); // 上海
+      }
+
+      // 2.对象解构 -> 对象的属性匹配上对应的名称
+      {
+        const obj = {
+          name: "shadow",
+          age: 22,
+          say: function () {
+            console.log("oracle");
+          },
+        };
+        let { name, age, say } = obj;
+        console.log(name); // shadow
+        console.log(age); // 22
+        say(); // oracle
+        // 映射提取
+        let { name: myName, age: myAge, say: a } = obj;
+        console.log(myName); // shadow
+        console.log(myAge); // 22
+        a(); // oracle
+      }
+    </script>
+  </body>
+</html>
